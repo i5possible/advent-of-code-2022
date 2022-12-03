@@ -14,3 +14,4 @@ for (let i = 0; i <= lines.length; i++) {
   current += Number(lines[i]);
 }
 console.log(max);
+// 69206
