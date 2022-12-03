@@ -35,3 +35,4 @@ const result = lines
   .reduce(sum);
 
 console.log(result);
+// 13682
