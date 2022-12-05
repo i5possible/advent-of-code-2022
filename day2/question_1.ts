@@ -1,6 +1,6 @@
 import { readLines } from "../readFile";
 import { sum } from "../reducer";
-const lines = readLines("./day2/input.txt").filter((line) => line !== "");
+const lines = readLines("./day2/input.txt");
 
 type OpponentInput = "A" | "B" | "C";
 type MyInput = "X" | "Y" | "Z";
