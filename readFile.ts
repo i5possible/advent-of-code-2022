@@ -1,8 +1,10 @@
 import fs from "fs";
+import * as path from 'path';
 
 export const readLines = (fileName: string, splitter = /\r?\n/): string[] => {
   try {
-    const data = fs.readFileSync(fileName, "utf-8");
+    const absolutePath = path.resolve(__dirname, fileName);
+    const data = fs.readFileSync(absolutePath, "utf-8");
     const lines = data.split(splitter);
     return lines;
   } catch (err) {
