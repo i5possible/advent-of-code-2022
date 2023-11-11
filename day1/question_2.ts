@@ -1,4 +1,4 @@
-import { readData } from "./../readFile";
+import { readData } from "../fileUtils";
 const data = readData("./day1/input.txt");
 
 const sum = (a: number, b: number): number => a + b;

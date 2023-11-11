@@ -1,4 +1,4 @@
-import { readLines } from '../readFile'
+import { readLines } from '../fileUtils'
 
 const trees = readLines('./day8/input.txt')
   .map((row) => row.split('')

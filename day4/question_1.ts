@@ -1,4 +1,4 @@
-import { readLines } from "../readFile";
+import { readLines } from "../fileUtils";
 const lines = readLines("./day4/input.txt");
 
 const checkOverlap = (line: string) => {

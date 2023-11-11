@@ -1,4 +1,4 @@
-import { readLines } from '../readFile'
+import { readLines } from '../fileUtils'
 
 const lines = readLines('./day9/input.txt')!
 

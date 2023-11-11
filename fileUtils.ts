@@ -20,3 +20,12 @@ export const readData = (fileName: string) => {
     console.error(err);
   }
 };
+
+export const appendToFile = (fileName: string, data: string) => {
+  try {
+    const absolutePath = path.resolve(__dirname, fileName);
+    fs.appendFileSync(absolutePath, data);
+  } catch (err) {
+    console.error(err);
+  }
+}

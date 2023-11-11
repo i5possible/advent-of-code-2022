@@ -1,6 +1,6 @@
 import { exit } from "process";
 import { sum } from "../reducer";
-import { readLines } from "./../readFile";
+import { readLines } from "../fileUtils";
 const lines = readLines("./day7/input.txt")!;
 
 /**

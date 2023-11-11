@@ -1,4 +1,4 @@
-import { readLines } from "../readFile";
+import { readLines } from "../fileUtils";
 import { sum } from "../reducer";
 const lines = readLines("./day3/input.txt");
 

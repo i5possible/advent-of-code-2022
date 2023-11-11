@@ -1,4 +1,4 @@
-import { readData } from "./../readFile";
+import { readData } from "../fileUtils";
 const dataStream = readData("./day6/input.txt")!;
 
 console.log(dataStream);

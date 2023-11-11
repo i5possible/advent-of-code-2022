@@ -1,4 +1,4 @@
-import { readData } from "./../readFile";
+import { readData } from "../fileUtils";
 const lines = readData("./day5/input.txt")!;
 
 const [position, instructions] = lines.split("\n\n");
