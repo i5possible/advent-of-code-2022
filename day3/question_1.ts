@@ -1,6 +1,6 @@
-import { readLines } from "../fileUtils";
-import { sum } from "../reducer";
-const lines = readLines("./day3/input.txt");
+import { readLines } from '../fileUtils';
+import { sum } from '../reducer';
+const lines = readLines('./day3/input.txt');
 
 // console.log(lines.length);
 const evaluateProperty = (input: string): number => {
@@ -13,7 +13,7 @@ const evaluateProperty = (input: string): number => {
 // Double loop
 // use Bloom filter if it's really long
 const intersect = (first: string, second: string): string =>
-  first.split("").find((x) => second.includes(x))!;
+  first.split('').find((x) => second.includes(x))!;
 
 const findSharedItem = (input: string) => {
   const firstHalf = input.slice(0, input.length / 2);

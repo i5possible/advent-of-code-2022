@@ -1,6 +1,6 @@
-import { appendToFile, readLines } from '../fileUtils'
+import { appendToFile, readLines } from '../fileUtils';
 
-const lines = readLines('./day9/input.txt')!
+const lines = readLines('./day9/input.txt')!;
 
 type Position = {
   x: number;
@@ -9,20 +9,20 @@ type Position = {
 
 const head = {
   x: 0,
-  y: 0
-}
+  y: 0,
+};
 
 // rope has ten positions
 const rope = Array(10).fill({ ...head });
 
 type MotionResult = {
-  rope: Position[]
+  rope: Position[];
   tailVisited: Position[];
-}
+};
 
 const logPosition = (position: Position) => {
   console.log(`${position.x},${position.y}`);
-}
+};
 
 const processMotion = (rope: Position[], motion: string): MotionResult => {
   const [direction, distanceStr] = motion.split(' ');
@@ -31,29 +31,29 @@ const processMotion = (rope: Position[], motion: string): MotionResult => {
 
   let step = { x: 0, y: 0 };
   switch (direction) {
-    case "R":
+    case 'R':
       step = {
         x: 1,
         y: 0,
-      }
+      };
       break;
-    case "L":
+    case 'L':
       step = {
         x: -1,
         y: 0,
-      }
+      };
       break;
-    case "U":
+    case 'U':
       step = {
         x: 0,
         y: 1,
-      }
+      };
       break;
-    case "D":
+    case 'D':
       step = {
         x: 0,
         y: -1,
-      }
+      };
       break;
   }
   let newHead;
@@ -86,14 +86,14 @@ const processMotion = (rope: Position[], motion: string): MotionResult => {
   return {
     rope: newRope,
     tailVisited,
-  }
-}
+  };
+};
 
 const calculateMotion = (head: Position, tail: Position): Position[] => {
-  const result: Position[] = []
-  const xDistance = Math.abs(head.x - tail.x)
-  const yDistance = Math.abs(head.y - tail.y)
-  const distance = Math.max(xDistance, yDistance)
+  const result: Position[] = [];
+  const xDistance = Math.abs(head.x - tail.x);
+  const yDistance = Math.abs(head.y - tail.y);
+  const distance = Math.max(xDistance, yDistance);
   if (distance <= 1) {
     return result;
   }
@@ -104,24 +104,24 @@ const calculateMotion = (head: Position, tail: Position): Position[] => {
     for (let i = 1; i < distance; i++) {
       result.push({
         x: tail.x + xStep * i,
-        y: tail.y + yStep * i
-      })
+        y: tail.y + yStep * i,
+      });
     }
   } else if (xDistance > 1) {
     const step = (head.x - tail.x) / distance;
     for (let i = 1; i < distance; i++) {
       result.push({
         x: tail.x + step * i,
-        y: head.y
-      })
+        y: head.y,
+      });
     }
   } else {
     const step = (head.y - tail.y) / distance;
     for (let i = 1; i < distance; i++) {
       result.push({
         x: head.x,
-        y: tail.y + step * i
-      })
+        y: tail.y + step * i,
+      });
     }
   }
   // result.forEach((position) => {
@@ -132,7 +132,7 @@ const calculateMotion = (head: Position, tail: Position): Position[] => {
   //   }
   // })
   return result;
-}
+};
 
 // For demo input only
 const printPositions = (rope: Position[]) => {
@@ -151,7 +151,7 @@ const printPositions = (rope: Position[]) => {
     }
     // console.log(line);
   }
-}
+};
 
 const processMotions = (rope: Position[], motions: string[]): MotionResult => {
   let tailVisited: Position[] = [];
@@ -161,17 +161,17 @@ const processMotions = (rope: Position[], motions: string[]): MotionResult => {
     currentRope = result.rope;
     // printPositions(currentRope);
     result.tailVisited.forEach((position) => {
-      if(position.x % 1 !== 0 || position.y % 1 !== 0) {
+      if (position.x % 1 !== 0 || position.y % 1 !== 0) {
         console.log(`${position.x},${position.y}`);
       }
-    })
+    });
     tailVisited = tailVisited.concat(result.tailVisited);
   }
   return {
     rope: currentRope,
-    tailVisited
-  }
-}
+    tailVisited,
+  };
+};
 
 const { tailVisited } = processMotions(rope, lines);
 const getUniquePosition = (positions: Position[]): Position[] => {
@@ -185,12 +185,11 @@ const getUniquePosition = (positions: Position[]): Position[] => {
     const [x, y] = position.split(',');
     uniquePositions.push({
       x: parseInt(x, 10),
-      y: parseInt(y, 10)
-    })
+      y: parseInt(y, 10),
+    });
   });
   return uniquePositions;
-}
-
+};
 
 const getUniquePositionStringArray = (positions: Position[]): string[] => {
   const uniquePositions = new Set<string>();
@@ -198,8 +197,8 @@ const getUniquePositionStringArray = (positions: Position[]): string[] => {
     uniquePositions.add(`${position.x},${position.y}`);
   }
   return [...uniquePositions];
-}
+};
 
-const uniquePosition = getUniquePositionStringArray(tailVisited)
+const uniquePosition = getUniquePositionStringArray(tailVisited);
 console.log(uniquePosition.length);
 // printPositions(uniquePosition);

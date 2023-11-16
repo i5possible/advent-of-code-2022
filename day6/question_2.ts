@@ -1,9 +1,9 @@
-import { readData } from "../fileUtils";
-const dataStream = readData("./day6/input.txt")!;
+import { readData } from '../fileUtils';
+const dataStream = readData('./day6/input.txt')!;
 
 console.log(dataStream);
 
-let distinctCharacters = "";
+let distinctCharacters = '';
 for (let i = 0; i < dataStream.length; i++) {
   const character = dataStream[i];
   if (distinctCharacters.includes(character)) {

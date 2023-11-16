@@ -1,6 +1,6 @@
-import { readLines } from '../fileUtils'
+import { readLines } from '../fileUtils';
 
-const lines = readLines('./day10/input.txt')!
+const lines = readLines('./day10/input.txt')!;
 
 let registerValue = 1;
 let cycles = 0;
@@ -12,9 +12,9 @@ for (let i = 0; i < lines.length; i++) {
   const value = valueStr ? parseInt(valueStr, 10) : 0;
 
   switch (instruction) {
-    case "addx":
+    case 'addx':
       for (let j = 0; j < 2; j++) {
-        const position = cycles % 40 + 1;
+        const position = (cycles % 40) + 1;
         if (position >= registerValue && position <= registerValue + 2) {
           cache += '#';
         } else {
@@ -29,8 +29,8 @@ for (let i = 0; i < lines.length; i++) {
       }
       registerValue += value;
       break;
-    case "noop":
-      const position = cycles % 40 + 1;
+    case 'noop':
+      const position = (cycles % 40) + 1;
       if (position >= registerValue && position <= registerValue + 2) {
         cache += '#';
       } else {

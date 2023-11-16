@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "format": "prettier --loglevel warn --write ."
   },
   "repository": {
     "type": "git",

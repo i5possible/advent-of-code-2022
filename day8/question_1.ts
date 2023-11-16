@@ -1,5 +1,5 @@
 import { readLines } from '../fileUtils';
-const trees = readLines("./day8/input.txt")!;
+const trees = readLines('./day8/input.txt')!;
 
 const rowCount = trees.length;
 
@@ -10,7 +10,7 @@ for (let i = 0; i < rowCount; i++) {
   let rowVisible: boolean[] = [];
   const row = trees[i];
   // check from left
-  let tallest=-1;
+  let tallest = -1;
   for (let j = 0; j < row.length; j++) {
     // count++ if the current position is the tallest
     const current = parseInt(row[j]);
@@ -22,7 +22,7 @@ for (let i = 0; i < rowCount; i++) {
     rowVisible[j] = rowVisible[j] || currentVisible;
   }
 
-  tallest=-1;
+  tallest = -1;
   // check from right
   for (let j = row.length - 1; j >= 0; j--) {
     // count++ if the current position is the tallest
@@ -68,7 +68,7 @@ let visibleCount = 0;
 for (let i = 0; i < visible.length; i++) {
   const row = visible[i];
   for (let j = 0; j < row.length; j++) {
-    if(row[j]) {
+    if (row[j]) {
       visibleCount++;
     }
   }

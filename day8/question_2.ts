@@ -1,12 +1,12 @@
-import { readLines } from '../fileUtils'
+import { readLines } from '../fileUtils';
 
-const trees = readLines('./day8/input.txt')
-  .map((row) => row.split('')
-    .map((char) => parseInt(char)))
+const trees = readLines('./day8/input.txt').map((row) =>
+  row.split('').map((char) => parseInt(char))
+);
 
 let highestScore = 0;
 for (let i = 0; i < trees.length; i++) {
-  const row = trees[i]
+  const row = trees[i];
   let positionScore = 1;
   for (let j = 0; j < row.length; j++) {
     const current = row[j];

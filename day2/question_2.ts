@@ -1,10 +1,10 @@
-import { readLines } from "../fileUtils";
-import { sum } from "../reducer";
+import { readLines } from '../fileUtils';
+import { sum } from '../reducer';
 // const lines = readLines("example_input.txt").filter((line) => line !== "");
-const lines = readLines("./day2/input.txt").filter((line) => line !== "");
+const lines = readLines('./day2/input.txt').filter((line) => line !== '');
 
-type OpponentInput = "A" | "B" | "C";
-type MyInput = "X" | "Y" | "Z";
+type OpponentInput = 'A' | 'B' | 'C';
+type MyInput = 'X' | 'Y' | 'Z';
 
 const mapOpponentInputToValue = (opponentInput: OpponentInput) =>
   opponentInput.charCodeAt(0) - 64;
@@ -38,7 +38,7 @@ const calculateValue = (
 };
 
 const result = lines
-  .map((line) => line.split(" "))
+  .map((line) => line.split(' '))
   .map(([opponentInput, myInput]) =>
     calculateValue(opponentInput as OpponentInput, myInput as MyInput)
   )

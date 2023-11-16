@@ -1,14 +1,14 @@
-import { exit } from "process";
-import { sum } from "../reducer";
-import { readLines } from "../fileUtils";
-const lines = readLines("./day7/input.txt")!;
+import { exit } from 'process';
+import { sum } from '../reducer';
+import { readLines } from '../fileUtils';
+const lines = readLines('./day7/input.txt')!;
 
 /**
  * memory: current dir
  * storage: Known file structure and size
  */
-const Dir = "dir";
-const File = "file";
+const Dir = 'dir';
+const File = 'file';
 
 type Maybe<T> = T | null;
 type FileType = typeof Dir | typeof File;
@@ -22,14 +22,14 @@ type Node = {
 
 const initNode: Node = {
   type: Dir,
-  name: "",
+  name: '',
   size: 0,
   nodes: [],
   parent: null,
 };
 const root: Node = {
   type: Dir,
-  name: "/",
+  name: '/',
   size: 0,
   nodes: [],
   parent: null,
@@ -37,7 +37,7 @@ const root: Node = {
 
 const printNode = (node: Node, indent = 2) => {
   console.log(
-    `${" ".repeat(indent)}- ${node.name} (${node.type}, size=${node.size})`
+    `${' '.repeat(indent)}- ${node.name} (${node.type}, size=${node.size})`
   );
   if (node.type === Dir) {
     node.nodes.forEach((node) => printNode(node, indent + 2));
@@ -49,12 +49,12 @@ const processLines = (lines: string[], initNode: Node) => {
   let lsStarted = false;
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
-    const symbols = line.split(" ");
-    if (symbols[0] === "$") {
-      if (symbols[1] === "ls") {
+    const symbols = line.split(' ');
+    if (symbols[0] === '$') {
+      if (symbols[1] === 'ls') {
         lsStarted = true;
         continue;
-      } else if (symbols[1] === "cd") {
+      } else if (symbols[1] === 'cd') {
         if (currentNode.type === Dir) {
           const size = currentNode.nodes
             .map((node) => node.size)
@@ -66,13 +66,13 @@ const processLines = (lines: string[], initNode: Node) => {
         }
         lsStarted = false;
         const path = symbols[2];
-        if (path === "..") {
+        if (path === '..') {
           currentNode = currentNode.parent!;
         } else {
           const existedNode = currentNode.nodes.find(
             (node) => node.name === path
           );
-          if (path === "/") {
+          if (path === '/') {
             currentNode = root;
           } else if (existedNode) {
             currentNode = existedNode;
@@ -92,7 +92,7 @@ const processLines = (lines: string[], initNode: Node) => {
     } else {
       if (lsStarted) {
         currentNode.nodes.push({
-          type: symbols[0] === "dir" ? Dir : File,
+          type: symbols[0] === 'dir' ? Dir : File,
           name: symbols[1],
           size: parseInt(symbols[0]),
           nodes: [],

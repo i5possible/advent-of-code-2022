@@ -1,14 +1,14 @@
-import { readData } from "../fileUtils";
-const data = readData("./day1/input.txt");
+import { readData } from '../fileUtils';
+const data = readData('./day1/input.txt');
 
 const sum = (a: number, b: number): number => a + b;
 const sortDesc = (a: number, b: number): number => b - a;
 
 const topThree = data
-  ?.split("\n\n")
+  ?.split('\n\n')
   .map((group) =>
     group
-      .split("\n")
+      .split('\n')
       .map((line) => parseInt(line))
       .reduce(sum)
   )

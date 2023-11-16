@@ -1,9 +1,9 @@
-import { readLines } from "../fileUtils";
-import { sum } from "../reducer";
-const lines = readLines("./day2/input.txt");
+import { readLines } from '../fileUtils';
+import { sum } from '../reducer';
+const lines = readLines('./day2/input.txt');
 
-type OpponentInput = "A" | "B" | "C";
-type MyInput = "X" | "Y" | "Z";
+type OpponentInput = 'A' | 'B' | 'C';
+type MyInput = 'X' | 'Y' | 'Z';
 
 const mapOpponentInputToValue = (opponentInput: OpponentInput) =>
   opponentInput.charCodeAt(0) - 64;
@@ -28,7 +28,7 @@ const calculateValue = (opponentInput: OpponentInput, myInput: MyInput) => {
 };
 
 const result = lines
-  .map((line) => line.split(" "))
+  .map((line) => line.split(' '))
   .map(([opponentInput, myInput]) =>
     calculateValue(opponentInput as OpponentInput, myInput as MyInput)
   )

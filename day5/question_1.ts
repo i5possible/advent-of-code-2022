@@ -1,9 +1,9 @@
-import { readData } from "../fileUtils";
-const lines = readData("./day5/input.txt")!;
+import { readData } from '../fileUtils';
+const lines = readData('./day5/input.txt')!;
 
-const [position, instructions] = lines.split("\n\n");
+const [position, instructions] = lines.split('\n\n');
 
-const parseStackCount = (line: string) => parseInt(line.split("   ").pop()!);
+const parseStackCount = (line: string) => parseInt(line.split('   ').pop()!);
 const parseCharacter = (character: string) => character[1];
 
 const parseLine = (rawLine: string, stackCount: number): string[] => {
@@ -26,7 +26,7 @@ const parseStacks = (position: string[]) => {
   for (let i = position.length - 2; i >= 0; i--) {
     const line = parseLine(position[i], stackCount);
     for (let j = 0; j < stackCount; j++) {
-      if (line[j] !== " " && line[j] !== undefined) {
+      if (line[j] !== ' ' && line[j] !== undefined) {
         stacks[j].push(line[j]);
       }
     }
@@ -34,12 +34,12 @@ const parseStacks = (position: string[]) => {
   return stacks;
 };
 
-const stacks = parseStacks(position.split("\n"));
+const stacks = parseStacks(position.split('\n'));
 // console.log(stacks);
 
 const parseInstruction = (instruction: string) => {
   const [, count, , from, , to] = instruction
-    .split(" ")
+    .split(' ')
     .map((x) => parseInt(x));
   return [count, from, to];
 };
@@ -56,12 +56,12 @@ const processInstructions = (stacks: string[][], instructions: string[]) => {
   return stacks;
 };
 
-const processedStacks = processInstructions(stacks, instructions.split("\n"));
+const processedStacks = processInstructions(stacks, instructions.split('\n'));
 // console.log(processedStacks);
 
 const result = processedStacks
   .map((stack) => stack.slice(stack.length - 1))
-  .join("");
+  .join('');
 
 console.log(result);
 // FRDSQRRCD
