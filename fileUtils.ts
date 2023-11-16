@@ -1,10 +1,10 @@
-import fs from "fs";
+import fs from 'fs';
 import * as path from 'path';
 
 export const readLines = (fileName: string, splitter = /\r?\n/): string[] => {
   try {
     const absolutePath = path.resolve(__dirname, fileName);
-    const data = fs.readFileSync(absolutePath, "utf-8");
+    const data = fs.readFileSync(absolutePath, 'utf-8');
     const lines = data.split(splitter);
     return lines;
   } catch (err) {
@@ -15,9 +15,11 @@ export const readLines = (fileName: string, splitter = /\r?\n/): string[] => {
 
 export const readData = (fileName: string) => {
   try {
-    return fs.readFileSync(fileName, "utf-8");
+    const absolutePath = path.resolve(__dirname, fileName);
+    return fs.readFileSync(absolutePath, 'utf-8');
   } catch (err) {
     console.error(err);
+    return '';
   }
 };
 
@@ -28,4 +30,4 @@ export const appendToFile = (fileName: string, data: string) => {
   } catch (err) {
     console.error(err);
   }
-}
+};
