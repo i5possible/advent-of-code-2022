@@ -4,8 +4,6 @@ const data = readData('./day13/input.txt');
 
 const pairs = data.split('\n\n');
 
-const pair = pairs[0];
-
 const isRightOrder = (left: any, right: any): boolean | undefined => {
   if (typeof left === 'number' && typeof right === 'number') {
     if (left === right) {
@@ -44,8 +42,6 @@ const isRightOrder = (left: any, right: any): boolean | undefined => {
       }
       return result;
     }
-    console.log(left, right);
-    console.log('!!!!!!!!!');
     return true;
   }
   return false;
@@ -66,7 +62,7 @@ const sumRightOrderIndex = (pairs: string[]): number => {
     if (isRight) {
       sum += index + 1;
     }
-    console.log(isRight, index + 1);
+    // console.log(isRight, index + 1);
   });
   return sum;
 };
